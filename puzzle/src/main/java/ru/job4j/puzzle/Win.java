@@ -8,11 +8,7 @@ public class Win {
                 result = false;
                 break;
             }
-            if (board[row][i] != 1) {
-                result = false;
-                break;
-            }
-        }
+       }
         return result;
     }
 
