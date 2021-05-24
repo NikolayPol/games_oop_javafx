@@ -13,27 +13,19 @@ public class LogicTest {
         BishopBlack bishopBlack = new BishopBlack(Cell.B1);
         logic.add(bishopBlack);
         logic.move(bishopBlack.position(), Cell.H7);
-        //для теста открыл геттером поле figure к классе Logic
-        assertEquals(logic.getFigures()[0].position(), Cell.H7);
     }
 
-    @Test
+    @Test (expected = OccupiedCellException.class)
     public void freeOccupiedCellExceptionTest() throws FigureNotFoundException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.B1));
         logic.add(new BishopBlack(Cell.D3));
-        try {
-            logic.move(Cell.B1, Cell.H7);
-        } catch (OccupiedCellException e) {
-            final String expected = "OccupiedCellException";
-            assertEquals(e.getMessage(), expected);
-        }
+        logic.move(Cell.B1, Cell.H7);
     }
 
     @Test(expected = FigureNotFoundException.class)
     public void freeFigureNotFoundExceptionTest() throws FigureNotFoundException {
         Logic logic = new Logic();
         logic.move(Cell.B1, Cell.H7);
-
     }
 }

@@ -7,8 +7,7 @@ import ru.job4j.chess.firuges.Figure;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.*;
 
 public class BishopBlackTest {
 
@@ -61,7 +60,7 @@ public class BishopBlackTest {
     public void testIsDiagonal() {
         BishopBlack bishopBlackActual = new BishopBlack(Cell.C1);
         Cell expected = Cell.H6;
-        assertFalse(bishopBlackActual.isDiagonal(bishopBlackActual.position(), expected));
+        assertTrue(bishopBlackActual.isDiagonal(bishopBlackActual.position(), expected));
     }
 
     @Test

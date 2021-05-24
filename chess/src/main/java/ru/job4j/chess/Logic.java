@@ -9,10 +9,6 @@ public final class Logic {
     private final Figure[] figures = new Figure[32];
     private int index = 0;
 
-    public Figure[] getFigures() {
-        return figures;
-    }
-
     public void add(Figure figure) {
         figures[index++] = figure;
     }
@@ -21,9 +17,8 @@ public final class Logic {
             throws ImpossibleMoveException, OccupiedCellException, FigureNotFoundException {
         int index = findBy(source);
         Cell[] steps = figures[index].way(dest);
-        if (free(steps)) {
-            figures[index] = figures[index].copy(dest);
-        }
+        free(steps);
+        figures[index] = figures[index].copy(dest);
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
