@@ -1,12 +1,10 @@
 package ru.job4j.chess.firuges.black;
 
-import junit.framework.TestCase;
 import org.junit.Test;
+import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
-
 import java.util.Arrays;
-
 import static org.junit.Assert.*;
 
 public class BishopBlackTest {
@@ -45,15 +43,10 @@ public class BishopBlackTest {
         assertEquals(Arrays.toString(bishopBlack.way(Cell.A1)), Arrays.toString(expected));
     }
 
-    @Test
+    @Test (expected = ImpossibleMoveException.class)
     public void testWayException() {
         Figure bishopBlack = new BishopBlack(Cell.C1);
-        try {
-            bishopBlack.way(Cell.G6);
-        } catch (Exception e) {
-            final String expected = "Could not way by diagonal from C1 to G6";
-            assertEquals(e.getMessage(), expected);
-        }
+        bishopBlack.way(Cell.G6);
     }
 
     @Test
